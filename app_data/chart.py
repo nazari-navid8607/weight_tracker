@@ -28,7 +28,14 @@ def draw_chart(index):
     ax.plot(df.index, df[metric], marker='o', label=metric)
     ax.set_title(f"{metric} Over Time")
     ax.set_xlabel("Date")
-    ax.set_ylabel(metric)
+    if metric == "Weight":
+        ax.set_ylabel(f"{metric} (kg)")
+    elif metric == "Calories":
+        ax.set_ylabel(f"{metric} (kcal)")
+    elif metric == "Cardio":
+        ax.set_ylabel(f"{metric} (minutes)")
+    elif metric == "PushUps":
+        ax.set_ylabel(f"{metric}")
     ax.grid(True)
     ax.legend()
 
@@ -64,4 +71,5 @@ draw_chart(current_index)
 
 # Run the app
 root.protocol("WM_DELETE_WINDOW", root.quit)
+
 root.mainloop()
